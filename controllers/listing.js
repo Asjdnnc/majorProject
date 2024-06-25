@@ -92,11 +92,14 @@ module.exports.search = async (req, res) => {
         $or: [{ country: regex }, { title: regex }],
       };
       const results = await Listing.find(searchQuery);
+      if(results=={}){
+        req.flash("error","No listing found");
+      }
       res.render("listings/search.ejs",{results})
     } else {
       // Handle empty query case (optional)
       // You can send an informative message or an empty array here
-      req.flash("error","No listing");
+      req.flash("error","Error found");
     }
   };
 
