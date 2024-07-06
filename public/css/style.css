@@ -384,3 +384,50 @@ color:white;
     flex-direction: column;
   }
 }
+
+/* Navbar styles */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-brand i {
+  margin-right: 10px;
+}
+
+#navbarNav {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Filters styles */
+#filters {
+  margin: 20px 0;
+  padding: 10px;
+  white-space: nowrap;
+}
+.filter-link {
+  display: inline-block;
+  margin-right: 10px;
+}
+.filter {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.filter i {
+  font-size: 24px;
+}
+.filter p {
+  margin: 5px 0 0;
+}
+
+/* Listings styles */
+.listing-card {
+  margin-bottom: 20px;
+}
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
