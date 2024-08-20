@@ -8,9 +8,10 @@ const listingSchema = new Schema({  //defining schema
        type : String,
        required : true,
     },
-
+    clickCount: {
+      type:Number,
+      default:1},
     description : String,
-
     image : {
         url:String,
         filename:String,
@@ -18,6 +19,7 @@ const listingSchema = new Schema({  //defining schema
     price : Number,
     location : String,
     country : String,
+
     reviews:[
       {
         type:Schema.Types.ObjectId,
