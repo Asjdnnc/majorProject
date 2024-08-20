@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const port = 8080;
 const mongodb = "mongodb://127.0.0.1:27017/project";
 const dbUrl = process.env.ATLASDB_URL;
+// const dbUrl = process.env.NODE_ENV === "production" ? process.env.ATLASDB_URL : mongodb;
 const path = require("path");
 const methodOverride=require("method-override");
 const ejsMate = require('ejs-mate'); 
@@ -15,6 +16,7 @@ const ExpressError = require("./utils/ExpressError.js");
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const reservationRouter = require("./routes/reservation.js");
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
@@ -82,8 +84,7 @@ async function main() {
 
 app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews",reviewsRouter);
-app.use("/",userRouter);
-
+app.use("/",userRouter,reservationRouter);
 
 app.all("*",(req,res,next)=>{  //if route do not match 
     next(new ExpressError(404,"Page not found"));
