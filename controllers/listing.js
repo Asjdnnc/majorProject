@@ -15,17 +15,28 @@ module.exports.index = async (req,res) => {
      res.render("listings/new.ejs");
     }
 
+  //reservation save route
+  module.exports.saveReservation = (req,res)=>{
+    
+    res.redirect("/listings");
+  }
+  //reservation show route
+  module.exports.showReservation = (req,res)=>{
+    res.render("listings/reservation.ejs");
+  }
  //show route
  module.exports.showListing = async (req,res) => {
     let {id} = req.params;
     const data = await Listing.findById(id)
     //nested populate
     .populate({path:"reviews",populate:{path:"author"}}).populate("owner");
-    const username = req.session.username;
     if(!data){
         req.flash("error","Listing does not exist");
         res.redirect("/listings");
     }
+    const username = req.session.username;
+    data.clickCount += 1;
+    await data.save();
     res.render("listings/show.ejs",{data,username});
 }
 
@@ -104,22 +115,30 @@ module.exports.search = async (req, res) => {
     }
   };
 
-//feature
+//filter feature
 module.exports.category = async (req,res)=>{
-  const { category } = req.query;
-  if(category=='Trending' || category=='Rooms'){
+  const {category} = req.query;
+  let listings;
+  if(category==="Rooms"){
     req.flash("error","This feature is in development stage");
+    res.redirect("/listings");
   }
+  else if(category==="Trending"){
+    listings = await Listing.aggregate([
+      { $sort: { clickCount: -1 } },
+      { $limit: 5 }
+  ])
+  res.render("listings/category.ejs",{listings,category});
+  }
+  else{
   let query = {};
-  if (category) {
+  if(category){
     query = { categories: category };
   }
-  const listings = await Listing.find(query);
+  listings = await Listing.find(query);
   res.render("listings/category.ejs",{listings,category});
-    // req.flash("error","This feature is in development stage");
-    // res.redirect("/listings");
 }
-
+}
 //delete route
 module.exports.destroyListing = async (req,res) =>{
     let {id} = req.params;
