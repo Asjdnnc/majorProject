@@ -15,8 +15,8 @@ router.route("/")
         upload.single('listing[image]'),
         validateListing, 
         wrapAsync(listingController.createListing)); //create route
-    
-        //new route.
+
+//new route.
 router.get("/new",isLoggedIn,listingController.renderNewForm);
 
 //search route
