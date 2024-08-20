@@ -3,6 +3,7 @@
   --text-color: black;
   --navbar-bg-color: white;
   --card-bg-color: #ffffff;
+  --card-border-color:#000;
   --card-text-color: #212529;
   --footer-bg-color: #ebebeb;
   --link-color: #222222;
@@ -17,6 +18,7 @@
   --text-color: white;
   --navbar-bg-color: #1e1e1e;
   --card-bg-color: #121212;
+  --card-border-color:#ffffff;
   --card-text-color: #e0e0e0;
   --footer-bg-color: #2e2e2e;
   --link-color: #ffffff;
@@ -90,12 +92,15 @@ body {
   background-color: var(--card-bg-color);
   border-radius: 1rem; /* Ensure the card has rounded corners */
 }
-
 .card-img-top {
   border-radius: 1rem !important;
   width: 100% !important;
   object-fit: cover !important;
 }
+/* .card-img-overlay:hover{
+  transform: scale(1.05);
+  transition-duration: 0.1s;
+} */
 
 .card-body {
   padding: 0 !important;
@@ -110,15 +115,22 @@ body {
   opacity: 0;
   border-radius: 1rem; /* Ensure the overlay has the same rounded corners */
 }
-
+.card-text{
+  margin-left:70px;
+  margin-top:8px;
+  transform: scale(1.2);  
+}
 .card-img-overlay:hover {
   opacity: 0.3;
-  background-color: var(--bg-color); /* Use variable for background color */
+  /* background-color: var(--bg-color); Use variable for background color */
   border-radius: 1rem; /* Ensure the hover effect has the same rounded corners */
 }
-
 .container {
-  flex: 1;
+  width:100%;
+  /* margin-top:90px;
+  margin-bottom:100px;
+  transform: scale(1.11); */
+  height:fit-content;
 }
 
 .add-btn {
@@ -139,6 +151,9 @@ body {
   padding-right: 0;
 }
 
+#explore-btn{
+  margin-right: 2px;
+}
 .nav-item a {
   margin-left: 1.8rem;
   margin-right: 0.3rem;
@@ -148,7 +163,7 @@ body {
 }
 
 #loginlink {
-  margin-right: 3rem;
+  margin-right: 4rem;
 }
 
 .nav-item a:hover {
@@ -219,7 +234,7 @@ a:hover {
   }
 }
 #logout {
-  margin-right: 3rem;
+  margin-right: 5rem;
 }
 [data-theme="dark"]{
 #reviewbody{
@@ -383,8 +398,40 @@ color:white;
   .row-cols-sm-1 {
     flex-direction: column;
   }
-<<<<<<< HEAD
 }
-=======
+.review{
+  position: absolute;
+  right:2%;
+  top:800px;
+  width: 40%;
 }
->>>>>>> c5174b4dd21a7fd941255ef065d904f1158dbc44
+#reviewbody{
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+#listing-test{
+  margin-left:10px;
+}
+#map{
+  width:80%;
+}
+.giveReview{
+  width:51%;
+}
+.glass:hover{
+transform: scale(1.04);
+transition-duration: 0.3s;
+opacity: 0.7;
+}
+#listing-text2 {
+  margin-left:10px !important;
+  margin-top:5px !important; 
+}
+#listing-text3 {
+margin-top: 30px;
+}
+#reservation-border{
+  border: 1px solid var(--card-border-color);
+}
+#card-head::first-letter {
+    text-transform: capitalize;
+}
