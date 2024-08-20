@@ -6,20 +6,19 @@
     }
 </style>
 <h3>Category: <%=category%></h3><br>
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-    <%if(listings.length==0){%>
-        <h4>This section is in development stage</h4>
-    <%}%>
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
     <%for(let listing of listings){%>
-        <a href="/listings/<%=listing.id%>">   
+        <a href="/listings/<%=listing._id%>">   
         <div class="card col listing-card">
+            <div class="glass">
             <img src="<%= listing.image.url %>"
              class="card-img-top" 
              alt="listing_img" 
-             style="height:20rem"> 
+             style="height:15rem"> 
              <div class="card-img-overlay"></div>
+            </div>
             <div class="card-body">
-              <p class="card-text"><b><%= listing.title %></b>
+              <p id='listing-text2'><b><%= listing.title %></b>
                 <br>
                 &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
                 <i class="tax-info">&nbsp +18% GST</i>
@@ -28,4 +27,4 @@
         </div>
         </a>
  <%}%>
-    </div> 
+</div> 
