@@ -1,0 +1,121 @@
+/* Scoped to reservation card to prevent conflicts */
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: white;
+}
+.reservation-card {
+    max-width: 390px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    position: absolute;
+    top:240px;
+    left:1100px;
+    transform: scale(1.18);
+}
+p{
+    color: var(--text-color);
+}
+
+.reservation-card .price {
+    display: flex;
+    align-items: baseline;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.reservation-card .original-price {
+    text-decoration: line-through;
+    color: #888;
+    margin-right: 10px;
+}
+
+.reservation-card .discounted-price {
+    font-weight: bold;
+    color: #333;
+}
+
+.reservation-card .dates-guests {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.reservation-card .date,
+.reservation-card .guests {
+    width: 48%;
+    margin-right: 5px;
+}
+.reservation-card .guests {
+    margin-top: 2px;
+}
+
+
+.reservation-card label {
+    font-size: 0.8em;
+    color: #777;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.reservation-card input[type="date"],
+.reservation-card select {
+    width: 100%;
+    padding: 5px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.reservation-card .reserve-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #fe424d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.reservation-card .reserve-btn:hover {
+    background-color: #fb1222;
+}
+
+.reservation-card .charge-info {
+    font-size: 0.9em;
+    color: #888;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.reservation-card .price-details {
+    font-size: 0.9em;
+    color: #333;
+}
+
+.reservation-card .price-breakdown,
+.reservation-card .special-offer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+#discount1 {
+    color: green;
+}
+
+.reservation-card .total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1em;
+    color: #333;
+}
+.reservation-card .discounted-price{
+    color: var(--text-color);
+}
