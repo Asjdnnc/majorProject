@@ -2,6 +2,7 @@ const Listing = require("./models/listing");
 const Review = require("./models/review");
 const {listingSchema,reviewSchema} = require("./schema.js");
 const ExpressError = require("./utils/ExpressError.js");
+
 //middleware to check user login in website
 module.exports.isLoggedIn = (req,res,next)=>{
     if(!req.isAuthenticated()){
@@ -18,7 +19,6 @@ module.exports.saveRedirectUrl = (req,res,next)=>{
    }
    next();
 }
-
 module.exports.isOwner = async (req,res,next)=>{
     let {id} = req.params;
     let listing = await Listing.findById(id);
