@@ -7,8 +7,8 @@ const app = express();
 const mongoose = require("mongoose");
 const port = 8080;
 const mongodb = "mongodb://127.0.0.1:27017/project";
-const dbUrl = process.env.ATLASDB_URL;
-// const dbUrl = process.env.NODE_ENV === "production" ? process.env.ATLASDB_URL : mongodb;
+// const dbUrl = process.env.ATLASDB_URL;
+const dbUrl = process.env.NODE_ENV === "production" ? process.env.ATLASDB_URL : mongodb;
 const path = require("path");
 const methodOverride=require("method-override");
 const ejsMate = require('ejs-mate'); 
@@ -22,6 +22,7 @@ const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require("./models/user.js"); 
 
 //middleware
@@ -60,6 +61,53 @@ app.use(flash())
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate())); 
+
+// Configure Google OAuth strategy
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "https://majorproject-0elt.onrender.com/auth/google/callback"
+  },
+  async (accessToken, refreshToken, profile, done) => {
+    const { id, displayName, emails } = profile;
+    try {
+      let user = await User.findOne({ googleId: id });
+      if (!user) {
+        // If no user with this Google ID, check if the email exists
+        user = await User.findOne({ email: emails[0].value });
+        if (user) {
+          // If email exists, link Google ID to this user
+          user.googleId = id;
+          user.username = displayName;  // Update username if necessary
+        } else {
+          // If no user with this email, create a new user
+          user = await User.create({
+            googleId: id,
+            email: emails[0].value,
+            username: displayName,
+          });
+        }
+        await user.save();
+      }
+      return done(null, user);
+    } catch (error) {
+      return done(error, false);
+    }
+  }));
+  // Google Auth Routes
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] })
+  );
+  
+  app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    (req, res) => {
+      // Successful authentication
+      req.flash("success", "Welcome!");
+      res.redirect('/listings');  // Redirect to your dashboard or home page
+    }
+  );
+  
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
