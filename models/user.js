@@ -7,6 +7,11 @@ const userSchema = new Schema({
         type:String,
         required:true 
     },
+    googleId: {
+      type: String,
+      unique: true,
+      sparse: true  // Allows null values and ensures uniqueness if present
+  },
     Reservations:[
         {
           type:Schema.Types.ObjectId,
