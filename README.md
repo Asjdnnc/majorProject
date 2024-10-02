@@ -2,7 +2,7 @@
 Welcome to my first major project using the MERN stack! This repository contains the code for a hotels listing website where users can list their homes and provide reviews.
 
 **Project Overview**
-This project is a comprehensive web application built using the MERN stack (MongoDB, Express.js, React.js, and Node.js). It took me one month to complete, and I finished it at the end of my first year at IIIT Sonepat.
+This project is a comprehensive web application (MVC framework) built using the MERN stack (MongoDB, Express.js, React.js, and Node.js). It took me two months to complete, and I finished it at the end of my first year at IIIT Sonepat.
 
 **Features**
 User Authentication: Secure login and registration system.
