@@ -1,31 +1,37 @@
-**Hotels Listing Website**
-Welcome to my first major project using the MERN stack! This repository contains the code for a hotels listing website where users can list their homes and provide reviews.
+# Hotels Listing Website
 
-**Project Overview**
-This project is a comprehensive web application (MVC framework) built using the MERN stack (MongoDB, Express.js, React.js, and Node.js). It took me two months to complete, and I finished it at the end of my first year at IIIT Sonepat.
+Welcome to my first project using the MERN stack! This repository contains the code for a hotels listing website where users can list their homes and provide reviews.
 
-**Features**
-User Authentication: Secure login and registration system.
-Hotel Listings: Users can list their homes with detailed information and images.
-Reviews: Users can leave reviews and ratings for listed hotels.
-Search and Filter: Advanced search on basis of country and title.
-Technologies Used
+## Project Overview
 
-**Frontend**
-HTML, CSS, JavaScript
-Bootstrap 
+This project is a comprehensive web application (MVC framework) built using the **MERN stack** (MongoDB, Express.js, React.js, and Node.js). 
+[Website](https://majorproject-0elt.onrender.com/listings)
 
-**Backend**
-Node.js
-Express.js
-MongoDB
+## Features
+- **User Authentication**: Secure login and registration system.
+- **Hotel Listings**: Users can list their homes with detailed information and images.
+- **Reviews**: Users can leave reviews and ratings for listed hotels.
+- **Search and Filter**: Advanced search based on country and title.
 
-**Tools and Platforms**
-Git and GitHub for version control
-mongo Atlas for database
-render for deployment
-Hoppscotch for API testing
+## Technologies Used
 
-**Contributing**
-Feel free to fork this repository and make your own contributions. If you have any suggestions or improvements, 
-please open an issue or create a pull request. Your feedback is highly appreciated!
+**Frontend**: 
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+
+**Backend**:
+- Node.js
+- Express.js
+- MongoDB
+
+**Tools and Platforms**:
+- Git and GitHub for version control
+- Mongo Atlas for database
+- Render for deployment
+- Hoppscotch for API testing
+
+## Contributing
+
+Feel free to fork this repository and make your own contributions. If you have any suggestions or improvements, please open an issue or create a pull request. Your feedback is highly appreciated!
