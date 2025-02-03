@@ -32,6 +32,19 @@ This project is a comprehensive web application (MVC framework) built using the 
 - Render for deployment
 - Hoppscotch for API testing
 
+**Libraries**:
+- @mapbox/mapbox-sdk
+- cloudinary
+- connect-flash
+- connect-mongo
+- ejs
+- express-session
+- joi
+- multer
+- passport
+- passport-google-oauth20
+- passport-local
+
 ## Contributing
 
 Feel free to fork this repository and make your own contributions. If you have any suggestions or improvements, please open an issue or create a pull request. Your feedback is highly appreciated!
